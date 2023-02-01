@@ -23,12 +23,12 @@ public class SExperiencia {
         return rExperiencia.findById(id);
     }
     
-    public Optional<Experiencia> getByNombreE(String nombreE){
-        return rExperiencia.findByNombreE(nombreE);
+    public Optional<Experiencia> getByExperiencia(String experiencia){
+        return rExperiencia.findByExperiencia(experiencia);
     }
     
-    public void save(Experiencia expe){
-        rExperiencia.save(expe);
+    public void save(Experiencia experiencia){
+        rExperiencia.save(experiencia);
     }
     
     public void delete(int id){
@@ -39,8 +39,8 @@ public class SExperiencia {
         return rExperiencia.existsById(id);
     }
     
-    public boolean existsByNombreE(String nombreE){
-        return rExperiencia.existsByNombreE(nombreE);
+    public boolean existsByExperiencia(String experiencia){
+        return rExperiencia.existsByExperiencia(experiencia);
     }
     
     

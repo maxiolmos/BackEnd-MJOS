@@ -5,34 +5,75 @@ import jakarta.validation.constraints.NotBlank;
 public class dtoExperiencia {
 
     @NotBlank
-    private String nombreE;
+    private String experiencia;
+    
     @NotBlank
-    private String descripcionE;
+    private String empresa;
+    
+    @NotBlank
+    private String tareas;
+    
+    @NotBlank 
+    private String periodo;
+    
+    private String img;
+    
 
     //Constructores
     public dtoExperiencia() {
     }
 
-    public dtoExperiencia(String nombreE, String descripcionE) {
-        this.nombreE = nombreE;
-        this.descripcionE = descripcionE;
+    public dtoExperiencia(String experiencia, String empresa, String tareas, String periodo, String img) {
+        this.experiencia = experiencia;
+        this.empresa = empresa;
+        this.tareas = tareas;
+        this.periodo = periodo;
+        this.img = img;
     }
-
+    
+    
+    
     //Getters y Setters
-    public String getNombreE() {
-        return nombreE;
+
+    public String getExperiencia() {
+        return experiencia;
     }
 
-    public void setNombreE(String nombreE) {
-        this.nombreE = nombreE;
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
     }
 
-    public String getDescripcionE() {
-        return descripcionE;
+    public String getEmpresa() {
+        return empresa;
     }
 
-    public void setDescripcionE(String descripcionE) {
-        this.descripcionE = descripcionE;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
+    public String getTareas() {
+        return tareas;
+    }
+
+    public void setTareas(String tareas) {
+        this.tareas = tareas;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    
 }
