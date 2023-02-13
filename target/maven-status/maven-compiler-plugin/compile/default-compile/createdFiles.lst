@@ -1,7 +1,6 @@
-com\portfolio\mjos\Repository\IPersonaRepository.class
+com\portfolio\mjos\Repository\RPersona.class
 com\portfolio\mjos\Security\Controller\Mensaje.class
 com\portfolio\mjos\Security\Dto\LoginUsuario.class
-com\portfolio\mjos\Security\Service\SEducacion.class
 com\portfolio\mjos\Entity\Habilidades.class
 com\portfolio\mjos\Entity\Experiencia.class
 com\portfolio\mjos\Security\Entity\Rol.class
@@ -17,12 +16,11 @@ com\portfolio\mjos\Controller\CCursos.class
 com\portfolio\mjos\Repository\RHabilidades.class
 com\portfolio\mjos\Security\JWT\JwtProvider.class
 com\portfolio\mjos\Service\SExperiencia.class
-com\portfolio\mjos\Controller\PersonaController.class
 com\portfolio\mjos\Security\Dto\NuevoUsuario.class
 com\portfolio\mjos\Repository\RExperiencia.class
 com\portfolio\mjos\MjosApplication.class
+com\portfolio\mjos\Service\SEducacion.class
 com\portfolio\mjos\Security\Repository\iRolRepository.class
-com\portfolio\mjos\Service\ImpPersonaService.class
 com\portfolio\mjos\Security\Service\UserDetailsImpl.class
 com\portfolio\mjos\Security\Enums\RolNombre.class
 com\portfolio\mjos\DTO\dtoEducacion.class
@@ -31,8 +29,10 @@ com\portfolio\mjos\Security\Entity\UsuarioPrincipal.class
 com\portfolio\mjos\Security\Repository\iUsuarioRepository.class
 com\portfolio\mjos\Service\SHabilidades.class
 com\portfolio\mjos\Service\SCursos.class
+com\portfolio\mjos\Controller\CPersona.class
 com\portfolio\mjos\Controller\CEducacion.class
 com\portfolio\mjos\DTO\dtoCursos.class
+com\portfolio\mjos\Service\SPersona.class
 com\portfolio\mjos\Entity\Cursos.class
 com\portfolio\mjos\Controller\CExperiencia.class
 com\portfolio\mjos\Repository\REducacion.class

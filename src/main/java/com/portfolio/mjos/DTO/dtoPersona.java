@@ -4,12 +4,16 @@ import jakarta.validation.constraints.NotBlank;
 
 
 public class dtoPersona {
+    
     @NotBlank
     private String nombreCompleto;
+    
     @NotBlank
     private String profesion1;
+    
     @NotBlank
     private String profesion2;
+    
     @NotBlank
     private String lugarResidencia;
  

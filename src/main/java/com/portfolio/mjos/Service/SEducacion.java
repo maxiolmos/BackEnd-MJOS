@@ -1,4 +1,4 @@
-package com.portfolio.mjos.Security.Service;
+package com.portfolio.mjos.Service;
 
 import com.portfolio.mjos.Entity.Educacion;
 import com.portfolio.mjos.Repository.REducacion;

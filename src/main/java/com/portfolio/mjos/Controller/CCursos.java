@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/cursos")
-@CrossOrigin (origins = {"https://frontend-30555.web.app", "http://localhost:4200"})
+@CrossOrigin (origins = {"https://frontend-mjos2023.web.app", "http://localhost:4200"})
 public class CCursos {
     
     @Autowired
@@ -43,35 +44,57 @@ public class CCursos {
         return new ResponseEntity(cursos, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoCursos dtocursos) {
         if (StringUtils.isBlank(dtocursos.getCurso())) {
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El curso es obligatorio"), HttpStatus.BAD_REQUEST);
         }
         if (sCursos.existsByCurso(dtocursos.getCurso())) {
-            return new ResponseEntity(new Mensaje("Ese curso ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El curso ya existe"), HttpStatus.BAD_REQUEST);
         }
+        if (StringUtils.isBlank(dtocursos.getInstitucionCurso())) {
+            return new ResponseEntity(new Mensaje("La institución del curso es obligatoria"), HttpStatus.BAD_REQUEST);
+        }
+        if (StringUtils.isBlank(dtocursos.getFechaFinalizacion())) {
+            return new ResponseEntity(new Mensaje("La fecha de finalización es obligatoria"), HttpStatus.BAD_REQUEST);
+        }
+        if (StringUtils.isBlank(dtocursos.getEstado())) {
+            return new ResponseEntity(new Mensaje("El estado del curso es obligatorio"), HttpStatus.BAD_REQUEST);
+        }
+        
 
         Cursos cursos = new Cursos(
                 dtocursos.getCurso(), dtocursos.getInstitucionCurso(), dtocursos.getFechaFinalizacion(), dtocursos.getEstado(), dtocursos.getImg());
         sCursos.save(cursos);
 
-        return new ResponseEntity(new Mensaje("Curso añadido"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Curso añadido correctamente"), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoCursos dtocursos) {
-        //Validamos si existe el id
+    
         if (!sCursos.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.BAD_REQUEST);
         }
-        //Compara nombres de experiencia
-        if (sCursos.existsByCurso(dtocursos.getCurso()) && sCursos.getByCurso(dtocursos.getCurso()).get().getId() != id) {
-            return new ResponseEntity(new Mensaje("Ese curso ya existe"), HttpStatus.BAD_REQUEST);
-        }
-        //No puede estar vacío
+    
         if (StringUtils.isBlank(dtocursos.getCurso())) {
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El curso es obligatorio"), HttpStatus.BAD_REQUEST);
+        }
+        
+        if (sCursos.existsByCurso(dtocursos.getCurso()) && sCursos.getByCurso(dtocursos.getCurso()).get().getId() != id) {
+            return new ResponseEntity(new Mensaje("El curso ya existe"), HttpStatus.BAD_REQUEST);
+        }
+    
+        if (StringUtils.isBlank(dtocursos.getInstitucionCurso())) {
+            return new ResponseEntity(new Mensaje("La institución del curso es obligatoria"), HttpStatus.BAD_REQUEST);
+        }
+        if (StringUtils.isBlank(dtocursos.getFechaFinalizacion())) {
+            return new ResponseEntity(new Mensaje("La fecha de finalización es obligatoria"), HttpStatus.BAD_REQUEST);
+        }
+        if (StringUtils.isBlank(dtocursos.getEstado())) {
+            return new ResponseEntity(new Mensaje("El estado del curso es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
         Cursos cursos = sCursos.getOne(id).get();
@@ -82,9 +105,10 @@ public class CCursos {
         cursos.setImg(dtocursos.getImg());
 
         sCursos.save(cursos);
-        return new ResponseEntity(new Mensaje("Curso actualizado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Curso actualizado correctamente"), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         //Validamos si existe el id
@@ -94,7 +118,7 @@ public class CCursos {
 
         sCursos.delete(id);
 
-        return new ResponseEntity(new Mensaje("Curso eliminado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Curso eliminado correctamente"), HttpStatus.OK);
     }
 
     

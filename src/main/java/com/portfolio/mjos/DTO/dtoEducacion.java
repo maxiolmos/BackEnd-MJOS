@@ -3,25 +3,32 @@ package com.portfolio.mjos.DTO;
 import jakarta.validation.constraints.NotBlank;
 
 public class dtoEducacion {
+    
     @NotBlank
     private String titulo;
+    
     @NotBlank
     private String institucion;
+    
     @NotBlank
     private String promedio;
+    
     @NotBlank
     private String periodo;
+    
+    private String img;
     
     //Constructores
 
     public dtoEducacion() {
     }
 
-    public dtoEducacion(String titulo, String institucion, String promedio, String periodo) {
+    public dtoEducacion(String titulo, String institucion, String promedio, String periodo, String img) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.promedio = promedio;
         this.periodo = periodo;
+        this.img = img;
     }
     
     //Getters y Setters
@@ -57,8 +64,15 @@ public class dtoEducacion {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-    
-    
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+   
     
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Educacion {
@@ -11,20 +12,36 @@ public class Educacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @NotNull
     private String titulo;
+    
+    @NotNull
     private String institucion;
+    
+    @NotNull
     private String promedio;
+    
+    @NotNull
     private String periodo;
+    
+    private String img;
+
+    //Constructores
 
     public Educacion() {
     }
 
-    public Educacion(String titulo, String institucion, String promedio, String periodo) {
+    public Educacion(String titulo, String institucion, String promedio, String periodo, String img) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.promedio = promedio;
         this.periodo = periodo;
+        this.img = img;
     }
+
+
+    //Getters y Setters
 
     public int getId() {
         return id;
@@ -65,5 +82,15 @@ public class Educacion {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    
 
 }
