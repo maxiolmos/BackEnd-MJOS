@@ -12,10 +12,11 @@ public class UsuarioPrincipal implements UserDetails {
     private String nombre;
     private String nombreUsuario;
     private String email;
-    private String password;
+    private String password;    
     private Collection<? extends GrantedAuthority> authorities;
 
     //Constructores
+    
     public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;

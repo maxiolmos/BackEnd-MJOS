@@ -35,12 +35,16 @@ public class AuthController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+    
     @Autowired
     AuthenticationManager authenticationManager;
+    
     @Autowired
     UsuarioService usuarioService;
+    
     @Autowired
     RolService rolService;
+    
     @Autowired
     JwtProvider jwtProvider;
 

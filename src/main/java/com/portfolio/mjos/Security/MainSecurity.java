@@ -2,7 +2,6 @@ package com.portfolio.mjos.Security;
 
 import com.portfolio.mjos.Security.JWT.JwtEntryPoint;
 import com.portfolio.mjos.Security.JWT.JwtTokenFilter;
-import com.portfolio.mjos.Security.Service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity
 public class MainSecurity {
-    @Autowired
-    UserDetailsImpl userDetailsServiceImpl;
-
+    
     @Autowired
     JwtEntryPoint jwtEntryPoint;
 

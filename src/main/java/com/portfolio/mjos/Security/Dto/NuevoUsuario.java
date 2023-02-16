@@ -12,6 +12,7 @@ public class NuevoUsuario {
     private Set<String> roles = new HashSet<>();
 
     //Getters y Setters
+    
     public String getNombre() {
         return nombre;
     }

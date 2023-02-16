@@ -123,6 +123,7 @@ public class CPersona {
         persona.setProfesion1(dtopersona.getProfesion1());
         persona.setProfesion2(dtopersona.getProfesion2());
         persona.setLugarResidencia(dtopersona.getLugarResidencia());
+        persona.setImg(dtopersona.getImg());
         
         sPersona.save(persona);
         
